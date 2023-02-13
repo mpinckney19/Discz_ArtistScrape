@@ -63,3 +63,13 @@ def outPopularity(dbName, tblName, fileName):
     dataFrame.to_excel(fileName, index=False)
 
 #outPopularity(databaseName, tableName, xlFileName)
+
+def numRows(dbName, tblName):
+    conn = sqlite3.connect(dbName)
+    c = conn.cursor()
+    command_string = f'SELECT count(*) FROM {tblName}'
+    c.execute(command_string)
+    result = c.fetchall()
+    print(result)
+
+# numRows(databaseName, tableName)
